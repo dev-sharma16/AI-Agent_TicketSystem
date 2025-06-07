@@ -1,7 +1,7 @@
-import { inngest } from "../client";
-import User from "../../models/user"
+import { inngest } from "../client.js";
+import User from "../../models/user.js"
 import { NonRetriableError } from "inngest";
-import { sendEmail } from "../../utils/mailer";
+import { sendEmail } from "../../utils/mailer.js";
 
 export const onUserSignUp = inngest.createFunction(
     {id: "on-user-signup", retries: 2},
@@ -32,7 +32,7 @@ export const onUserSignUp = inngest.createFunction(
 
             return {success:true};
         } catch (error) {
-            console.error("❌Error in running steps", error.message);
+            console.error("❌Error in running steps (on-signup)", error.message);
             return {success:false};
         }
     }
